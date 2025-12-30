@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.emirates.ek.android.staging",
+               "sha256_cert_fingerprints": ["5A:E8:DC:89:3E:13:B1:79:AB:1E:12:20:FD:69:41:D7:51:43:C8:EB:EC:2B:54:E1:DE:02:E0:94:C7:B0:CC:7C"] }
+}]
