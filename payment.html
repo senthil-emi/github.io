@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Result</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f9; padding:24px; }
+    .container { max-width: 500px; margin: 0 auto; background:#fff; border:1px solid #ddd; border-radius:8px; padding:20px; }
+    h1 { font-size: 22px; margin-bottom: 16px; }
+    .buttons { display:flex; gap:12px; flex-wrap:wrap; }
+    button {
+      flex:1; padding:12px; border:none; border-radius:6px;
+      font-weight:bold; cursor:pointer; color:#fff;
+    }
+    .success { background:#28a745; }
+    .failure { background:#dc3545; }
+    #status { margin-top:16px; color:#444; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Payment Result</h1>
+    <p>Select the outcome of the payment:</p>
+    <div class="buttons">
+      <button class="success" id="btn-success">Payment Success</button>
+      <button class="failure" id="btn-failure">Payment Failure</button>
+    </div>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    const baseDeepLink = "emirates://secure/webview";
+
+    function sendDeepLink(eventType) {
+      const deepLinkUrl = baseDeepLink +
+        "?url=" + encodeURIComponent("https://payment.emirates.com/payment/cpg/redirection") +
+        "&eventType=" + eventType;
+
+      location.href = deepLinkUrl;
+      document.getElementById("status").textContent =
+        "Deep link sent with eventType=" + eventType;
+    }
+
+    document.getElementById("btn-success").addEventListener("click", () => sendDeepLink("SUCCESS"));
+    document.getElementById("btn-failure").addEventListener("click", () => sendDeepLink("FAILURE"));
+  </script>
+</body>
+</html>
