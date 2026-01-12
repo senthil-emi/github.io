@@ -31,19 +31,31 @@
     <button onclick="location.href='payment.html'">Go to Payment Page</button>
 
     <!-- New button to trigger secure webview deep link -->
-    <button onclick="openSecureWebView('https://payment.emirates.com/payment/cpg/redirection')">
+    <button onclick="WebViewHelper.openSecureWebView('https://payment.emirates.com/payment/cpg/redirection')">
       Open Secure WebView
     </button>
   </div>
 
   <script>
-    function openSecureWebView(url) {
-      // Construct your deep link with scheme/host/path and url param
-      const deepLinkUrl = "emirates://secure/webview?url=" + encodeURIComponent(url);
+    // JS call pack / helper object
+    const WebViewHelper = {
+      /**
+       * Opens a secure webview via deep link
+       * @param {string} url - The URL to load inside the secure webview
+       */
+      openSecureWebView: function(url) {
+        const deepLinkUrl = "emirates://secure/webview?url=" + encodeURIComponent(url);
+        location.href = deepLinkUrl;
+      },
 
-      // Navigate to the deep link so the app can intercept it
-      location.href = deepLinkUrl;
-    }
+      /**
+       * Example: close current page gracefully
+       */
+      closePage: function() {
+        window.close();
+        setTimeout(() => history.back(), 200);
+      }
+    };
   </script>
 </body>
 </html>
