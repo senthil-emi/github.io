@@ -35,7 +35,7 @@
     function sendDeepLink(eventType) {
       const deepLinkUrl = baseDeepLink +
         "?url=" + encodeURIComponent("https://payment.emirates.com/payment/cpg/redirection") +
-        "&eventType=" + eventType;
+        "?eventType=" + eventType;
 
       location.href = deepLinkUrl;
       document.getElementById("status").textContent =
@@ -47,5 +47,6 @@
   </script>
 </body>
 </html>
+
 
 
